@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ocevents.privateapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>PrivateApp</name>
+    <description>
+        A private version of Live Eventmanager App
+    </description>
+    <author email="chh_rahul@live.com" href="http://softweavertech.com">
+        Rahul Chhabra
+    </author>
+    <content src="index.html" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />    
+    <icon src="icons/iphone_57x57.png" gap:platform="ios" width="57" height="57" />
+    <icon src="icons/iphone_72x72.png" gap:platform="ios" width="72" height="72" />
+    <icon src="icons/iphone_76x76.png" gap:platform="ios" width="76" height="76" />
+    <icon src="icons/iphone_120x120.png" gap:platform="ios" width="120" height="120" />
+    <icon src="icons/iphone_152x152.png" gap:platform="ios" width="152" height="152" />
+    <icon src="icons/iphone_180x180.png" gap:platform="ios" width="180" height="180" />
+
+    <icon src="icons/iphone_58x58.png" platform="ios" width="58" height="58" />
+    <icon src="icons/iphone_87x87.png" platform="ios" width="87" height="87" />
+
+    <icon src="icons/LiveIcon.png" gap:platform="android" />
+    <icon src="icons/LiveIcon.png" gap:platform="ios" />
+    <gap:plugin name="cordova-plugin-customurlscheme" source="npm">
+        <param name="URL_SCHEME" value="live" />
+    </gap:plugin>
+    <plugin spec="https://github.com/apache/cordova-plugin-camera" source="git" />
+    <plugin spec="https://github.com/apache/cordova-plugin-file" source="git" />
+    <plugin spec="https://github.com/apache/cordova-plugin-whitelist" source="git" />
+    <plugin spec="https://github.com/apache/cordova-plugin-file-transfer" source="git" />
+    <plugin spec="https://github.com/apache/cordova-plugin-dialogs" source="git" />
+    <plugin spec="https://github.com/apache/cordova-plugin-media-capture" source="git" />
+    <plugin spec="https://github.com/apache/cordova-plugin-splashscreen" source="git" />
+    <plugin spec="https://github.com/wymsee/cordova-imagePicker" source="git" />
+    <plugin spec="https://github.com/phonegap/phonegap-plugin-barcodescanner" source="git" />
+    <plugin spec="https://github.com/driftyco/ionic-plugins-keyboard" source="git" />
+    <plugin spec="https://github.com/apache/cordova-plugin-inappbrowser" source="git" />
+    <plugin name="cordova-plugin-facebook4" version="1.7.1">
+        <param name="APP_ID" value="1419525454987223" />
+        <param name="APP_NAME" value="EVENTMANAGER" />
+    </plugin>
+    <gap:config-file platform="ios" parent="UIStatusBarHidden">
+        <true/>
+    </gap:config-file>
+    <platform name="android">
+        <splash src="icons/screen_640x960.png" density="land-hdpi"/>
+        <splash src="icons/screen_640x960.png" density="land-ldpi"/>
+        <splash src="icons/screen_640x960.png" density="land-mdpi"/>
+        <splash src="icons/screen_640x960.png" density="land-xhdpi"/>
+        <splash src="icons/screen_640x960.png" density="port-hdpi"/>
+        <splash src="icons/screen_640x960.png" density="port-ldpi"/>
+        <splash src="icons/screen_640x960.png" density="port-mdpi"/>
+        <splash src="icons/screen_640x960.png" density="port-xhdpi"/>
+    </platform>
+    <platform name="ios">
+        <splash src="icons/screen_320x480.png" width="320" height="480"/>
+        <splash src="icons/screen_640x960.png" width="640" height="960"/>
+        <splash src="icons/screen_768x1024.png" width="768" height="1024"/>
+        <splash src="icons/screen_1536x2048.png" width="1536" height="2048"/>
+        <splash src="icons/screen_1024x768.png" width="1024" height="768"/>
+        <splash src="icons/screen_2048x1536.png" width="2048" height="1536"/>
+        <splash src="icons/screen_640x1136.png" width="640" height="1136"/>
+        <splash src="icons/screen_750x1334.png" width="750" height="1334"/>
+        <splash src="icons/screen_1242x2208.png" width="1242" height="2208"/>
+        <splash src="icons/screen_2208x1242.png" width="2208" height="1242"/>
+    </platform>
+    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+        <false/>
+    </gap:config-file>
+    <preference name="AllowInlineMediaPlayback" value="true" />    
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="5000" />  
+    <preference name="android-build-tool" value="gradle" />
+    <preference name="phonegap-version" value="cli-6.3.0" />
+    <preference name="android-minSdkVersion" value="15" />             
+    <preference name="android-targetSdkVersion" value="15" /> 
+    <preference name="android-installLocation" value="auto" /> 
+</widget>
+
