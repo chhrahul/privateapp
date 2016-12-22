@@ -1,0 +1,215 @@
+@font-face {
+    font-family: 'oc-font-lib';
+    src: url('oc-font-lib.eot?v=00000000');
+    src: url('oc-font-lib.eot?v=00000000#iefix') format('embedded-opentype'),
+    url('oc-font-lib.woff?v=00000000') format('woff'),
+    url('oc-font-lib.ttf?v=00000000') format('truetype'),
+    url('oc-font-lib.svg#oc-font-lib?v=00000000') format('svg');
+}
+
+[class^="oc-icon-"], [class*=" oc-icon-"] {
+    font-family: 'oc-font-lib';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.oc-icon-add:before {
+    content: "\e900";
+}
+.oc-icon-add-folder:before {
+    content: "\e901";
+}
+.oc-icon-agenda:before {
+    content: "\e902";
+}
+.oc-icon-bonus:before {
+    content: "\e903";
+}
+.oc-icon-booking:before {
+    content: "\e904";
+}
+.oc-icon-camera:before {
+    content: "\e905";
+}
+.oc-icon-check:before {
+    content: "\e906";
+}
+.oc-icon-clear:before {
+    content: "\e907";
+}
+.oc-icon-clock:before {
+    content: "\e908";
+}
+.oc-icon-comments:before {
+    content: "\e909";
+}
+.oc-icon-controller:before {
+    content: "\e90a";
+}
+.oc-icon-dashboard:before {
+    content: "\e90b";
+}
+.oc-icon-delete:before {
+    content: "\e90c";
+}
+.oc-icon-download:before {
+    content: "\e917";
+}
+.oc-icon-duplicate:before {
+    content: "\e918";
+}
+.oc-icon-edit:before {
+    content: "\e919";
+}
+.oc-icon-email:before {
+    content: "\e91a";
+}
+.oc-icon-event-manager:before {
+    content: "\e91b";
+}
+.oc-icon-files:before {
+    content: "\e91c";
+}
+.oc-icon-folder:before {
+    content: "\e91d";
+}
+.oc-icon-formbuilder:before {
+    content: "\e91e";
+}
+.oc-icon-friends:before {
+    content: "\e91f";
+}
+.oc-icon-gamification:before {
+    content: "\e920";
+}
+.oc-icon-graphs:before {
+    content: "\e922";
+}
+.oc-icon-images:before {
+    content: "\e923";
+}
+.oc-icon-leaderboard:before {
+    content: "\e924";
+}
+.oc-icon-list-view:before {
+    content: "\e925";
+}
+.oc-icon-live:before {
+    content: "\e926";
+}
+.oc-icon-live-invert:before {
+    content: "\e927";
+}
+.oc-icon-logout:before {
+    content: "\e928";
+}
+.oc-icon-mail:before {
+    content: "\e929";
+}
+.oc-icon-more:before {
+    content: "\e92a";
+}
+.oc-icon-my-profile:before {
+    content: "\e92b";
+}
+.oc-icon-my-ticket:before {
+    content: "\e92c";
+}
+.oc-icon-nav-back:before {
+    content: "\e92d";
+}
+.oc-icon-nav-forward:before {
+    content: "\e92e";
+}
+.oc-icon-new:before {
+    content: "\e92f";
+}
+.oc-icon-notes:before {
+    content: "\e930";
+}
+.oc-icon-notification-badge:before {
+    content: "\e931";
+}
+.oc-icon-notification:before {
+    content: "\e932";
+}
+.oc-icon-notifications:before {
+    content: "\e933";
+}
+.oc-icon-points:before {
+    content: "\e934";
+}
+.oc-icon-push-messages:before {
+    content: "\e935";
+}
+.oc-icon-questions:before {
+    content: "\e936";
+}
+.oc-icon-quiz:before {
+    content: "\e937";
+}
+.oc-icon-rating:before {
+    content: "\e938";
+}
+.oc-icon-save:before {
+    content: "\e93b";
+}
+.oc-icon-seeker:before {
+    content: "\e93c";
+}
+.oc-icon-settings:before {
+    content: "\e93d";
+}
+.oc-icon-sms:before {
+    content: "\e93e";
+}
+.oc-icon-sms2:before {
+    content: "\e93f";
+}
+.oc-icon-sound:before {
+    content: "\e940";
+}
+.oc-icon-sound-off:before {
+    content: "\e941";
+}
+.oc-icon-sponsors:before {
+    content: "\e942";
+}
+.oc-icon-structure:before {
+    content: "\e943";
+}
+.oc-icon-structure-open:before {
+    content: "\e944";
+}
+.oc-icon-ticketing:before {
+    content: "\e945";
+}
+.oc-icon-trash:before {
+    content: "\e946";
+}
+.oc-icon-upload:before {
+    content: "\e947";
+}
+.oc-icon-videos:before {
+    content: "\e948";
+}
+.oc-icon-view:before {
+    content: "\e949";
+}
+.oc-icon-voting:before {
+    content: "\e94a";
+}
+.oc-icon-waiting-list:before {
+    content: "\e94b";
+}
+.oc-icon-welcome:before {
+    content: "\e94c";
+}

@@ -1,0 +1,202 @@
+header,
+.agenda-item-container .agenda-item-future .future-title,
+.agenda-container .agenda-content .agenda-item .agenda-info,
+.add-friends-container .friends-items-container {
+    background: #721a8f;
+}
+.agenda-container .agenda-content .agenda-item .agenda-footer {
+    background: #A952C6;
+}
+.agenda-item-container .date-wrapper .date,
+.agenda-item-container .time-wrapper .time,
+.agenda-item-container .time-wrapper .time,
+.agenda-container .date-wrapper .date,
+.agenda-container .agenda-content .agenda-item span,
+.agenda-container .agenda-content .agenda-item .agenda-info i,
+.agenda-container .agenda-content .agenda-item .agenda-footer,
+header .header-login-wrapper .log-info,
+header .header-cup {
+    color: #ffffff;
+}
+.agenda-item-container .agenda-item-future {
+    background: #192542;
+}
+.agenda-item-container .agenda-item-future .future-info p {
+    color: #27a9e1;
+}
+
+.green-text,
+header .header-cup i span,
+.header-title .green-text,
+.main-container .header-title p,
+.questions-container .questions-heading-title .votes-sort a.active,
+.questions-container .questions-item-container .answer-inner,
+.dropdown-menu.custom-dropdown li .active,
+.dropdown-menu.custom-dropdown li a:hover,
+.dropdown-menu.custom-dropdown .events-wrapper .events a.active,
+.dropdown-menu.custom-dropdown .user-profile-info .user-info .edit-btn-wrapper a,
+.agenda-container .agenda-header-wrapper .header-title h1,
+.agenda-item-container .agenda-item-rating-container .item-interactions .item-interaction-rate a.active,
+.quiz-question-container p strong,
+.quiz-container .quiz-results-wrapper .quiz-btn-wrapper .btn.scoreboard,
+.quiz-answer-container .correct-answer .poeng-options,
+.quiz-answer-container .correct-answer .poeng-options .check,
+.seeker-scores-table-heading,
+.seeker-description p strong,
+.seeker-game-container .seeker-finished-container .congrat-text-wrapper small,
+.seeker-game-container .seeker-top-scores-container .seeker-scores-table table tbody tr td .player-position,
+.seeker-game-container .seeker-top-scores-container .seeker-scores-table table tbody tr .points,
+.seeker-game-container .seeker-game-top-container .seeker-game-question-level ul.bordered li,
+.seeker-game-container .seeker-top-scores-container .seeker-scores-table table thead tr td .bordered span,
+.registration-questions-title,
+.add-friends-container .item-inner-wrapper .friends-item-inner h6,
+.add-friends-container .item-inner-wrapper .friends-item-inner h2 i,
+.add-friends-container .friends-items-container .friends-item > a span i.gicon-friends,
+.add-friends-container .friends-items-container .friends-item h6,
+.add-friends-container .header-title p i,
+.voting-page-container .votes-heading-title .votes-sort a.active,
+.voting-page-container .voting-content-wrapper .voting-end-content-title h3,
+.voting-page-container .voting-content-wrapper .voting-content-item ul li > a h4,
+.voting-page-container .voting-content-wrapper .voting-content-item ul li > a .voting-item-count,
+.leaderboards-container .table tbody tr td span.num,
+.qa-list dt,
+.qa-item-title,
+.like-btn:hover .fa-thumbs-up,
+.like-btn:hover .fa-thumbs-down,
+.liked-btn .fa-thumbs-up,
+.liked-btn .fa-thumbs-down,
+.has-file-upload .file-upload,
+footer .footer-menu .label-container.active label,
+footer .footer-menu.footer-menu-open .footer-menu-opened ul li.active a,
+footer .footer-menu .label-container.active p,
+footer .footer-menu .label-container.active i,
+.vex.vote-forwarding-dialog .users-list .team {
+    color: #96BD1F !important;
+}
+.like-btn .fa-thumbs-up,
+.like-btn .fa-thumbs-down {
+    color: #B3D940 !important;
+}
+header .header-login-wrapper .img-wrapper:after,
+.quiz-answer-container .correct-answer .poeng-options,
+.seeker-game-container .seeker-game-top-container .seeker-game-question-level ul.bordered li:after,
+.seeker-game-container .seeker-top-scores-container .seeker-scores-table table thead tr td .bordered span:after,
+.vex.the-chosen-one-dialog .image:after,
+.vote-forwarding-users .image:after {
+    border-color: #96BD1F !important;
+}
+.agenda-item-progress .agenda-item-progress-eta {
+    stroke: #96BD1F;
+}
+.user-profile-container .user-info,
+.user-profile-container .user-facebook-link {
+    background-color: #C66CE2 !important;
+}
+.leaderboards-container .table-striped tbody tr:nth-child(even) td {
+    background-color: #570075 !important;
+}
+.leaderboards-container .top-results-table-container .team-points-table .table-striped tbody tr:nth-child(odd) td {
+    background-color: #721A8F !important;
+}
+.gamification-footer-menu,
+.welcome-container a.main-link,
+#show-form-container,
+.seeker-game-container .seeker-container .seeker-bg-container .right-msg-container,
+.seeker-game-container .seeker-game-top-container .seeker-game-question-level ul.bordered li.active,
+.voting-page-container .voting-content-wrapper .voting-content-item ul li .voting-confirm-wrapper .confirm-btn-wrapper .voting-toggle-btn,
+.add-friends-container .item-inner-info .add-btn-wrapper a,
+.add-friends-container .add-friend-form-container form .form-group a,
+.add-friends-container .add-friend-form-container form .add-btn-wrapper .btn,
+.friend-request-confirm-wrapper .confirm-btn-wrapper .send-friend-request,
+.questions-container .questions-filter-items button,
+.agenda-item-container .agenda-item-rating-container > a,
+.presentation-modules a,
+.btn-primary,
+.vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
+    background-color: #96BD1F !important;
+}
+.btn-wrapper .btn-primary:hover,
+.quiz-container .quiz-btn-wrapper .btn:hover {
+    background-color: #7AA200 !important;;
+}
+.agenda-item-container .date-wrapper .date,
+.agenda-container .date-wrapper .date {
+    border-color: #504e4c transparent transparent transparent;
+}
+.agenda-item-container .time-wrapper .time {
+    border-color: transparent transparent #878482 transparent;
+}
+.agenda-container .agenda-header-wrapper,
+.main-container .header-title,
+.ticketing-container .ticketing-title-wrapper {
+    background: #8D37AA;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #8D37AA 0%, #A952C6 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #8D37AA), color-stop(100%, #A952C6));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, #8D37AA 0%, #A952C6 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, #8D37AA 0%, #A952C6 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, #8D37AA 0%, #A952C6 100%);
+    /* IE10+ */
+    background: linear-gradient(to right, #8D37AA 0%, #A952C6 100%);
+}
+.main-container,
+.quiz-page .quiz-header-wrapper,
+.qa-list dt,
+.leaderboards-container .user-points-table-container .user-points-table-title {
+    background: #721A8F;
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #721A8F 40%, #8D37AA 81%, #8D37AA 81%, #A952C6 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(40%, #721A8F), color-stop(81%, #8D37AA), color-stop(81%, #8D37AA), color-stop(100%, #A952C6));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg, #721A8F 40%, #8D37AA 81%, #8D37AA 81%, #A952C6 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg, #721A8F 40%, #8D37AA 81%, #8D37AA 81%, #A952C6 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg, #721A8F 40%, #8D37AA 81%, #8D37AA 81%, #A952C6 100%);
+    /* IE10+ */
+    background: linear-gradient(135deg, #721A8F 40%, #8D37AA 81%, #8D37AA 81%, #A952C6 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#721A8F', endColorstr='#A952C6', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+.agenda-item-container {
+    background: #233856;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #A952C6 39%, #A952C6 55%, #C66CE2 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(39%, #A952C6), color-stop(55%, #A952C6), color-stop(100%, #C66CE2));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #A952C6 39%, #A952C6 55%, #C66CE2 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #A952C6 39%, #A952C6 55%, #C66CE2 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #A952C6 39%, #A952C6 55%, #C66CE2 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #A952C6 39%, #A952C6 55%, #C66CE2 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#A952C6', endColorstr='#C66CE2', GradientType=0);
+    /* IE6-9 */
+}
+footer {
+    background: #721A8F;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #721A8F 22%, #721A8F 22%, #8D37AA 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(22%, #721A8F), color-stop(22%, #721A8F), color-stop(100%, #8D37AA));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #721A8F 22%, #721A8F 22%, #8D37AA 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #721A8F 22%, #721A8F 22%, #8D37AA 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #721A8F 22%, #721A8F 22%, #8D37AA 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #721A8F 22%, #721A8F 22%, #8D37AA 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#721A8F', endColorstr='#8D37AA', GradientType=0);
+    /* IE6-9 */
+}

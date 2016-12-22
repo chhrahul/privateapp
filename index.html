@@ -1,49 +1,1828 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<!DOCTYPE html> 
+<!-- saved from url=(0047)http://www.oceventmanager.com/gamification?tc=1 -->
+<html class=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" 
+         content="default-src * signsrestaurantandbar:; 
+                  style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
+                  script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+        <title>Gamification</title>
+        <meta name="title" content="Gamification ">
+        <meta name="keywords" content="">
+        <meta name="author" content="One Communication - www.onecom.no">
+        <meta name="publisher" content="© 2008 - One Communication">
+        <meta name="copyright" content="© 2008 - One Communication">
+        <meta name="distribution" content="global">
+        <meta name="revisit-after" content="2 days">
+        <meta name="robots" content="index,follow,noarchive">
+        <meta name="googlebot" content="noarchive">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <script type="text/javascript" src="js/LaunchMyApp.js"></script>
+         <meta name="apple-touch-fullscreen" content="yes">
+            <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic">
+            <link rel="stylesheet" href="https://experience.live/oc-publisher-framework/beta/resources/oc-font-lib/oc-font-lib.css?14012812">
+            <link rel="stylesheet" href="css/auto.css">      
+            <link rel="stylesheet" href="css/main.css">
+            <link rel="stylesheet" href="css/custom.css">
+            <link rel="stylesheet" href="css/magnific-popup.css">           
+            <link href="css/mediaelementplayer.css" rel="stylesheet" type="text/css">
+            <script src="js/config_db.js"></script>
+            <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+            <script src="js/jquery-1.10.1.min.js"></script>
+            <script src="js/jquery.countdown.js" type="text/javascript"></script>
+            <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+            <script src="http://js.pusher.com/3.2/pusher.min.js"></script>
+            <script src="js/tooltipster.bundle.min.js"></script>
+            <script src="js/tooltipster-scrollableTip.min.js"></script>
+            <script src="js/jquery.timeago.js"></script>
+            <script src="js/jquery.slimscroll.js"></script>            
+            <link rel="stylesheet" href="css/vex.css">
+            <link rel="stylesheet" href="css/vex-theme-plain.css">
+            <link rel="stylesheet" href="css/tooltipster.bundle.min.css">
+            <link rel="stylesheet" href="css/tooltipster-sideTip-borderless.min.css">
 
-    http://www.apache.org/licenses/LICENSE-2.0
+            <script type="text/javascript"> 
+                document.addEventListener("deviceready", onDeviceReady, false);                
+                
+                function onDeviceReady() {
+                    jQuery(document).ready(function($) {
+                        if(localStorage.user_id != '' && localStorage.user_id != undefined && localStorage.user_id != null) {                    
+                            loadgamification();
+                        }
+                    });
+                }
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+                function handleOpenURL(url) {                  
+                    if(localStorage.user_id == '' || localStorage.user_id == undefined || localStorage.user_id == null) {    
+                        var surl = url.split('/?')[1];
+                        var sp = surl.split("&");
+                        var username = sp[0].replace("e=", "");
+                        var password = sp[1].replace("h=", "");
+                        var selecturl = "http://" + sp[2].replace("d=", "").replace("http://www.", "").replace("www.", "").replace("http://", "");
+                                       
+                        if((username != "" || username != undefined || username != null ) && (password != "" || password != undefined || password != null ) && (selecturl != "" || selecturl != undefined || selecturl != null )) {
+                            localStorage.linkurlusername = username;
+                            localStorage.linkurlpassword = password;
+                            localStorage.linkurlselecturl = selecturl;
+                            autologinme();  
+                        }
+                     } 
+                }
+
+                var localLink = '/';
+                var GHomepageLink = "index.html";           
+            </script>           
+      </head>
+    <body onload="createTables();">
+        <div class="cssdivs">
+            <!--div class="fontsDiv">
+                <link rel="stylesheet" href="https://experience.live/oc-publisher-framework/beta/resources/oc-font-lib/oc-font-lib.css?14012812">
+            </div-->
+            <div class="stylesheetDiv"></div>
+            <div class="tempdiv"></div>
+            <div class="weltempdiv"></div>
+            <div class="pusherscript"></div>
+        </div>
+<!-- Image popup slider -->
+        <div class="mfp-bg mfp-ready" style="display:none;"></div>        
+        <div ata-role="page" id="pageone" class="mfp-wrap mfp-gallery mfp-close-btn-in mfp-auto-cursor mfp-ready" tabindex="-1" style="overflow-x: hidden; overflow-y: auto; display: none;" >
+            <div class="mfp-container mfp-s-ready mfp-image-holder">
+                <div class="mfp-content">
+                    <div class="mfp-figure" id="showOriginalImage" >
+                        <button class="mfp-close" type="button" title="Close (Esc)" onclick="closecommentimagespopupslider();">x</button>
+                        <br />
+                        <figure  class="commentpopup_image">
+                            <figcaption>
+                                <div class="mfp-bottom-bar">
+                                    <div class="mfp-title"></div>
+                                    <div class="mfp-counter"></div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="mfp-preloader">Loading...</div>
+                <button class="mfp-arrow mfp-arrow-left mfp-prevent-close" type="button" title="Previous (Left arrow key)" id="previousCommentImage"></button>
+                <button class="mfp-arrow mfp-arrow-right mfp-prevent-close" type="button" title="Next (Right arrow key)" id="nextvCommentImage"></button>
+            </div>
+            <div class="swipe"></div>
+        </div>
+<!-- Image popup slider --> 
+        <div class="main-wrapper">
+            <div class="container login-page-container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="container logo-wrapper" id="mainLogo"></div>
+                        <span class="gamification text-center">Engagement</span>
+                        
+                    <div align="center" class="loading_index_items" >
+                        <br />
+                        <img src="img/loading.gif" />
+                        <br />
+                        <p > loading app ...</p>
+                        <br />
+                    </div> 
+                <div align="center" class="loading_autologin_items" style="display:none;">
+                  <br />
+                  <img src="img/loading.gif" />
+                  <br />
+                  <p style="color: #fff; letter-spacing: 5px; text-transform: lowercase;"> loading app ...</p>
+                  <br />
+                </div> 
+                <div id="select_url">
+                  <form class="form-container" onsubmit="searchurl(); return false;">
+                    <div class="login-wrapper"> 
+                      <div class="form-group">
+                         <div class="url-dialog-input">
+                          <div class="search-wrapper urlSearch">
+                            <p>
+                              Find your provider
+                            </p>
+                            <i class="fafasearch" id="fasearch" onclick="searchurl();">a</i>
+                            <i class="fafatimes" id="fatimes" onclick="clearsearchurl();">a</i>
+                            <input type="text" placeholder="Company or event" class="searchUrl" value="" onkeyup="searchurl();" >                 
+                          </div>
+                          <ul class="urls-list" style="display:none;"> </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div id="autologinbox" style="display: none;">
+                  <div id="urlselected">
+                    <form class="form-container">
+                      <div class="login-wrapper"> 
+                        <div class="form-group">
+                         <div class="url-selected-data">
+                            <h1 id="selectedurlname">
+                              
+                            </h1>                
+                            <i class="fafacogs" id="fareset" onclick="resetUrl();">a</i>
+                            <p class="byselected">By: One Communication</p>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>       
+                        <div id="loginFacebookBox" class="hideloginbox show-5">
+                            <form class="form-container">
+                                
+                      <div class="login-type">
+                       
+                             <div class="form-group">
+                                        <a id="login_button" href="#" title="Login with credentials">
+                                            <i class="icon-edit"></i>
+                                            Login with credentials                          
+                          </a>
+                                    </div>
+                                        <div class="form-group">
+                                            <a href="#" id="fblogin" class="fblogin" onclick="login();" title="Login via Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                                Login via Facebook                              </a>
+                              <img src="img/loading.gif" class="loading_fblogin">
+                                        </div>
+                                                        </div>
+                            </form>
+                        </div>    
+                </div>
+                  
+                        <div id="loginBox" class="hide-element">
+                            <form class="form-container" name="user_login" method="post" action="" id="user_login">
+                                <div class="login-wrapper">
+                      
+                                 <div class="form-group">
+                                        <i class="icon-mail"></i>                                                   
+                                        <input class="form-control" type="text" name="email" id="fld_l_email" value="" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <i class="icon-lock"></i>
+                                        <input class="form-control" type="password" name="password" value="" id="fld_l_password" placeholder="Password">
+                                    </div>
+                                    <div class="btn-wrapper login-page-button">
+                                        <button type="submit" id="login_submit" onclick="loginme();" class="btn">Login</button>
+                          <img src="img/loading.gif" class="loading"> <br />
+                                        <div><a id="reset_button" href="#" title="Forgot password">Forgot password</a></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="resetPasswordBox" class="hide-element">
+                            <form class="form-container" name="reset_password" method="post" action="" id="reset_password">
+                                <div class="recover-password-wrapper">
+                                    <p id="rpw_desc">Enter your e-mail and we will send you a new password to your registred mobile number</p>
+                                    <div class="form-group">
+                                        <i class="icon-mail"></i>
+                                        <input class="form-control" type="text" name="email_sms_reset" id="fld_rp_email" placeholder="Email">
+                                    </div>
+                                    <div class="btn-wrapper login-page-button">
+                                        <button id="resetpasswordbtn" type="button" onclick="resetpassword();" class="btn">Reset password</button>
+                                        <div><a id="back_button" class="button" href="#" title="Go back">Go back</a></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="slowapploader" style="display: none;">
+                            <img src="img/loading.gif" />
+                        </div>
+                    </div>
+                </div>
+            </div>                                                            
+
+
+<!-- Other Divs --><!-- Header Starts -->  
+    <header class="header" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-1 header-dropdown-menu-wrapper">
+                    <a class="dropdown-btn" href="javascript:return false;" >
+                        <div class="menu">
+                            <i class="menu-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </i>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-3 header-cup">
+                    <a id="top-scores-link" href="#" onclick="gotopoints(1);">
+                        <i class="fa fa-trophy"> <span>#</span> 10</i>
+                    </a>
+                    <div id="notification-icon-wrapper" class="tooltipstered" onclick="tooltipnoti();">
+                        <i class="oc-icon-notification"></i>                  
+                        <span id="notifications-count" style="display:none;">0</span>
+                    </div>
+                </div>
+                            <div class="col-xs-4 clearfix">
+                    <div class="header-logo-container">
+                        <a href="index.html" onclick="loadgamification(); return false;">
+                                                        <img class="logo_inner" src="img/logo_inner.png">
+                                                </a>
+                    </div>
+                </div>
+                <div class="col-xs-4 header-login-wrapper">
+                                        <a href="#" onclick="changetoprofile(); return false;">
+                            <div class="log-info">
+                                <p>
+                                                                </p>
+                            </div>
+                            <div class="img-wrapper" id="profile_pic" style=""></div>
+                        </a>
+                                </div>
             </div>
         </div>
+    </header>
+
+
+<!-- Header Ends --><!-- Loading Agenda Container Starts -->
+
+
+    <div align="center" class="container loading_agenda_items main-container" style="display: none;">
+           <br />
+            <img src="img/loading.gif" />
+            <br />
+            
+    </div> 
+
+<!-- Loading Agenda Container Ends --><!-- Welcome Container Ends -->
+
+    <div class="container main-container welcome-container" style="display: none;">
+      <div class="row">
+              <div class="welcome-slider video">
+                       
+            <img class="main_banner_image" src="">
+          </div>
+            <div class="col-xs-12">
+          <div class="welcome-title">
+            <h1></h1>
+          </div>
+          <p>&nbsp;</p>
+          <div class="welcome-content">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Welcome Container Ends --><!-- Profile Container Start -->
+
+    <div class="container main-container user-profile-container" style="display: none;">
+      <div class="header-title row" onclick="changetoprofile(); return false;">
+        <p>
+            <a class="nav-arrow prev" href="#" title="Forrige" style="display: none;">
+                <i class="fa fa-angle-left" style="display: none;"></i>
+            </a>
+            <span class="breadcrumbs">
+                <span class="green-text" onclick="changetoprofile()">Profile</span>
+            </span>
+            <a class="nav-arrow next" href="#" title="Neste" style="display: none;">
+                <i class="fa fa-angle-right" style="display: none;"></i>
+            </a>
+        </p>
+      </div>
+      <div class="user-profile-add-container ">
+        <div class="main-img-wrapper">
+          <div class="main-img" style="background-image: url('');"></div>
+        </div>
+            <div class="imageaddedremoved"></div>
+            
+            <form enctype="multipart/form-data" method="post" action="">
+                                       <div class="selfie_button">
+                                        <div class="pic-upload selfie_capture">
+                    
+                    <button class="addselfie" onclick="showbuttons();" type="button" name="addselfie" value="1">Add</button>
+                              
+                                </div>
+                    <div class="pic-upload hidden_button" style="display:none;">
+                    <input type="button" value="Choose a Photo"  onclick="getPhoto(pictureSource.PHOTOLIBRARY);">
+                    
+                    Choose a Photo          </div>
+                    <div class="pic-upload hidden_button" style="display:none;">
+                    <input type="button" value="Take a Photo"  onclick="capturePhoto();">
+                    
+                   Take a Photo          </div>
+                    </div>
+                        </form>
+                        <div id="plid">
+                        <h5>Your player ID</h5>
+                        <h2 class="player_code"></h2>
+                        </div>
+              </div>
+          
+              
+          <div class="success_message">
+          <div class="isa_success">
+         <i class="fa fa-check"></i>
+         Profile Edited Successfully!
+         <input type="hidden" id="edited_success">
+    </div>
+          </div>    
+      <div class="user-info row">
+
+            <div class="user-info-panel show_info_user">
+                <dl class="dl-horizontal">
+                                    <dt class="all_username">Username</dt>
+                    <dd class="myname"></dd>
+                    
+                                    <dt class="all_email">Email</dt>
+                    <dd class="myemail"></dd>
+                    
+                                    <dt class="all_mobile">Mobile</dt>
+                    <dd class="mymobile"></dd>
+                    
+                                    <dt class="all_gender"></dt>
+                    <dd class="mygender"></dd>
+                                </dl>
+                <div class="btns-wrapper">
+                    <a class="btn user-info-edit-btn" href="#"></a>
+                </div>
+            </div>
+
+            <div class="user-info-edit-form edit_info_user user-info-panel hidden">
+                            <dl class="dl-horizontal clearfix">
+                    <dt id="all_fname">
+                        First Name                </dt>
+                    <dd>
+                        <input class="form-control" id="fname_edit" type="text" name="data[fName]" value="">
+                    </dd>
+                    <dt id="all_lname">
+                        Last Name                </dt>
+                    <dd>
+                        <input class="form-control" id="lname_edit" type="text" name="data[lName]" value="">
+                    </dd>
+                    <dt id="all_email">
+                        Email                </dt>
+                    <dd>
+                        <input class="form-control" id="email_edit" type="text" name="data[eMail]" value="">
+                    </dd>
+                    <dt id="all_remail">
+                        Repeat email                </dt>
+                    <dd>
+                        <input class="form-control" id="emailrepeat_edit" type="text" name="data[email_repeat]" value="">
+                    </dd>
+                    <dt id="all_mobile">
+                        Mobile                </dt>
+                    <dd>
+                        <input class="form-control" id="mobile_edit" type="text" name="data[mobile]" value="">
+                    </dd>
+                    <dt id="all_pwd">
+                        SetNewPassword                </dt>
+                    <dd>
+                        <input class="form-control" id="pwd_edit" type="password" name="data[password]">
+                    </dd>
+                    <dt id="all_rpwd">
+                        RepeatNewPassword                </dt>
+                    <dd>
+                        <input class="form-control" id="pwdrepeat_edit" type="password" name="data[password_repeat]">
+                    </dd>
+                </dl>
+                <div class="btns-wrapper">
+                    <button class="btn user-info-save-btn" onclick="return saveprofile();" type="button" name="save_details" value="1">Save</button>
+                    <a class="btn user-info-cancel-btn" href="#">Cancel</a>
+                </div>
+            </div>
+      
+      </div>
+          <div class="user-facebook-link row facebook-link" style="display:none;">
+                <h4></h4>
+            <div class="facebook-description">
+                       </div>
+        <div class="facebook-btn-wrapper">
+          <a href="#" onclick="linkwithfacebook();">
+                    <i class="fa fa-facebook fbs"></i><span class="linkfb"></span>            </a>
+        </div>
+      </div>
+      <div class="user-facebook-link row" id="unlinkfacebook" style="display:none;">
+      
+            <div class="facebook-btn-wrapper">
+          <a href="#" onclick="unlinkwithfacebook();">
+                    <i class="fa fa-facebook"></i> Unlink your account from Facebook            </a>
+        </div>
+      </div>
+              <dl class="qa-list row">
+                                   
+                            </dl>
+        </div>
+<!-- Profile Container Ends --><!-- Agenda List Container Start -->
+    
+    <div class="container main-container agenda-container list-agendalist-container agenda-menu-container" style="display: none;">
+        <div class="row">
+          <div class="agenda-header-wrapper">
+            
+            <div class="calendar-icon-wrapper col-xs-4">
+              <i class="gicon-agenda"></i>
+            </div>
+            <div id="agendamenuheader" class="header-title col-xs-4" onclick="changetoagenda(); return false;">
+                      <h1></h1>
+            </div>
+            <div class="see-all-wrapper col-xs-4">
+              <span>
+                          <a style="color: #fff;text-decoration: none;" class="seealls"  href="#" onclick="changetoallagenda(); return false;" data-type="all">
+                              <span>All</span>
+                              <i class="fa fa-clock-o"></i>
+                          </a>
+                      </span>
+            </div>
+          </div>
+        </div>
+          <div id="presentations-list">
+                        <div class="row">
+                        <div class="date-wrapper ">
+                            <div class="date">
+                                <p>Torsdag 26. Juni</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                <div class="row">
+                    <div class="agenda-content">
+                        <div class="agenda-item col-xs-12">
+                            <a href="http://beta.oceventmanager.com/View-presentation/-/100000/51">
+                                <div class="agenda-info">
+                                                        <div class="agenda-img">
+                                                        <svg class="agenda-item-progress" version="1.1" xmlns="http://www.w3.org/2000/svg" data-duration="" data-eta="">
+                        <circle class="agenda-item-progress-bg" r="47.5" cx="50%" cy="50%" fill="transparent" stroke-dasharray="298.45130209103036" stroke-dashoffset="0"></circle>
+                        <circle class="agenda-item-progress-eta" r="49.5" cx="50%" cy="50%" fill="transparent" stroke-dasharray="311.01767270538954" stroke-dashoffset="0"></circle>   
+                    </svg>
+                </div>
+                                    <div class="agenda-wrapper">
+                                        <span class="agenda-slogan">
+                                            1. Quiz test + rating                                        </span>
+                                        <i class="fa fa-angle-right"></i>
+                                                                                    <div class="agenda-person-info">
+                                                <span class="name">Quiz test subtitle</span>
+                                            </div>
+                                                                            </div>
+                                </div>
+                            </a>
+                            <div class="agenda-footer">
+                                                                &nbsp;
+                                                                <div class="meeting-location">
+                                    <i class="fa fa-map-marker"></i>
+                                    Barcelona                                </div>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+                        </div>
+      </div>
+
+<!-- Agenda List Container Ends --><!-- Ticketing Container Start -->
+      
+       <div class="container main-container ticketing-container" style="display:none;">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="ticketing-title-wrapper"  onclick="changetoticketing(); return false;">
+              <h1></h1>
+            </div>
+            <div class="ticketing-content">
+              <h3></h3>
+              <div class="qr-code-wrapper">
+                <img class="qr_photo" src="">
+              </div>
+              <p class="ticket_code"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+<!-- Ticketing Container Ends --><!-- Leaderboard Container Start -->
+
+      <div class="container main-container leaderboards-container yourscores-leaderboards-container" style="display: none;">
+        <div class="header-title row">
+            <p>
+        <span class="breadcrumbs" onclick="changetopoints(); return false;"><span class="green-text">Points</span></span></p>    </div>
+                <div class="subheader-grey row"></div>
+            <div class="user-points-table-container row">
+                <table class="user-points-table-title">
+            <tbody><tr>
+                <th class="col-xs-12">
+                    <a href="#" onclick="changetopoints(); return false;" class="active yourscores">
+                                    </a>
+                </th>
+                <th class="col-xs-4 teampoints" style="display:none;">
+                    <a href="#" onclick="changetoteampoints(); return false;" class="teamscores">
+                                    </a>
+                </th>
+                <th class="col-xs-4 yourteam" style="display:none;">
+                    <a href="#" onclick="changetoyourpoints(); return false;" class="yourteam">
+                                   </a>
+                </th>
+                    </tr>
+        </tbody></table>        <div class="user-points-table">
+                    <table class="table table-striped">
+                        <tbody>
+                                           
+                                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+        
+<!-- Leaderboard Container Ends --><!-- First Container starts -->
+
+        <div class="container main-container leaderboards-container first-container" style="display: none;">
+            <div class="header-title row">
+                <p>
+                <span class="breadcrumbs">
+                <a href="#" onclick="changetopoints(); return false;">Points</a> / <span class="green-text"></span></span></p>  
+            </div>
+            <div class="subheader-grey row"></div>
+            <div class="top-results-table-container row">
+                <div class="team-points-table">
+                <table class="table table-striped">
+                    <tbody>
+
+
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+<!-- First Container Ends --><!-- teamscore Container Start -->
+
+
+        <div class="container main-container leaderboards-container teamscores-leaderboards-container" style="display: none;">
+          <div class="header-title row">
+          <p>
+      <span class="breadcrumbs"><span class="green-text">Points</span></span></p>    </div>
+              <div class="subheader-grey row"></div>
+          <div class="user-points-table-container row">
+              <table class="user-points-table-title">
+          <tbody><tr>
+              <th class="col-xs-4">
+                  <a href="#" onclick="changetopoints(); return false;" class="yourscores">
+                                  </a>
+              </th>
+              <th class="col-xs-4">
+                  <a href="#" onclick="changetoteampoints(); return false;" class="active teamscores">
+                                  </a>
+              </th>
+              <th class="col-xs-4">
+                  <a href="#" onclick="changetoyourpoints(); return false;" class="yourteam">
+                                </a>
+              </th>
+                  </tr>
+      </tbody></table>        <div class="user-points-table">
+                  <table class="table table-striped">
+                      <tbody>
+                                         
+                                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div> 
+
+<!-- teamscore Container Ends --><!-- Leaderboard last Container Start -->
+
+    <div class="container main-container leaderboards-container last-container" style="display: none;">
+            <div class="subheader-grey row"></div>
+        <div class="user-points-table-container row">
+            <table class="user-points-table-title">
+        <tbody><tr>
+            <th class="col-xs-4">
+                <a href="#" onclick="changetopoints(); return false;" class="active yourscores">
+                                </a>
+            </th>
+                    <th class="col-xs-4">
+                <a href="#" onclick="changetoteampoints(); return false;" class="teamscores">
+                                </a>
+            </th>
+            <th class="col-xs-4">
+                <a href="#" onclick="changetoyourpoints(); return false;" class="yourteam">
+                            </a>
+            </th>
+                </tr>
+    </tbody></table>        <div class="user-points-table">
+                <table class="table table-striped">
+                    
+                    <tbody>
+                          <tr class="active">
+                            <td>
+                                <a href="#">
+                                    <span class="num">2.</span>
+                                    <span class="icon">
+                                        <i class="social-icon"></i>                                </span>
+                                    Bonus                            </a>
+                            </td>
+                            <td class="point">
+                                <a href="#">
+                                    80000                                <i class="fa fa-angle-right"></i>
+                                </a>
+                            </td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<!-- Leaderboard last Container Ends --><!-- yourteamscore Container Start -->
+
+    <div class="container main-container leaderboards-container yourteam-leaderboards-container" style="display: none;">
+            <div class="header-title row">
+        <p>
+    <span class="breadcrumbs"><span class="green-text">Points</span></span></p>    </div>
+            <div class="subheader-grey row"></div>
+        <div class="user-points-table-container row">
+            <table class="user-points-table-title">
+        <tbody><tr>
+            <th class="col-xs-4" >
+                <a href="#" onclick="changetopoints(); return false;" class="yourscores">
+                              </a>
+            </th>
+            <th class="col-xs-4" >
+                <a href="#" onclick="changetoteampoints(); return false;" class="teamscores">
+                               </a>
+            </th>
+            <th class="col-xs-4">
+                <a href="#" onclick="changetoyourpoints(); return false;" class="active yourteam">
+                              </a>
+            </th>
+                </tr>
+        </tbody></table>        <div class="user-points-table">
+                <table class="table table-striped">
+                    <tbody>
+                                       
+                                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+
+<!-- yourteamscore Container Ends --><!-- add-friends Container Start -->
+
+        
+        <div class="container main-container add-friends-container contacts-container" style="display: none;">
+            <div class="header-title row" onclick="changetocontacts(); return false;">
+                <p class="mycont">
+                    
+                            </p>
+            </div>
+            <h2 class="container-title contacts_request">
+                                <i class="gicon-friends"></i>
+                </h2>
+                <div class="friends-items-container friends-requests-container">
+                            
+                </div> 
+                <div class="contactloader" style="display:none;">
+                    <img src="img/contactloader.gif">
+                </div>
+               <input type="hidden" class="is_friend" value="" />
+
+            <div class="add-friend-form-container">
+                <form class="form-container" action="" method="post">
+                    <div class="player-code-wrapper addContactId" style="display:none;">
+                        <p>
+                            Din bruker ID:
+                            <span class="green-text"></span>
+                        </p>
+                    </div>
+                    <div class="player-code-input-wrapper addContactId" style="display:none;">
+                        <label for="user-code">Legg til kontakt  <i class="oc-icon-friends"></i></label>
+                        <input id="user-code" class="form-control" type="text" name="user_code" placeholder="Din kontakts bruker ID">
+                    </div>
+                    <div class="add-btn-wrapper addContactId" style="display:none;">
+                        <input type="button" class="btn" name="add_friend" value="Legg til kontakt" onclick="addFriendbyCode();">
+                            
+                    </div>
+                                                        <div class="form-group">
+                        <label for="users-filter" class="part_l"></label>
+                        <input id="users-filter" class="form-control" type="text" placeholder="">
+                        <span><i class="fa fa-search"></i></span>
+                                                                <a class="show-friends-btn" href="#" onclick="changetoyourcontacts(); return false;">
+                                                   </a>
+                                                        </div>
+                </form>
+            </div>
+                <div id="friends-content-container">
+                    
+                        
+                                <div class="friends-items-container all_conts">
+                                    
+                                
+                            
+                                </div>
+                                <div class="loader contactloader" style="display:none;">
+                                    <img src="img/contactloader.gif">
+                                </div>
+                            
+                        
+                </div>  
+            
+        </div>
+
+<!-- add-friends Container Ends --><!-- Notes Container Start -->
+
+
+        
+        <div class="container main-container questions-container agenda-container notes-agenda-container notes-container" style="display: none;">
+            <div class="row">
+                <div class="agenda-header-wrapper">
+                    <div class="header-title col-xs-12" onclick="changetonotes(); return false;">
+                        <h1></h1>
+                    </div>
+                </div>
+            </div>
+                    <div class="questions-heading-title row">
+                    <div class="votes-count col-xs-12">
+                        <i class="gicon-notes"></i>
+                        <span class="green-text"></span>
+                        <span class="green-texttitle"></span>
+                                    </div>
+                </div>    
+                            <div id="allnotes">
+                          
+            </div>
+            <div id="show-form-container">
+                    
+                            
+                    </div>
+                    <div id="cpmainnote" class="questions-filter-items main-questions-form-container has-file-upload" style="display:none;">
+       
+        <div class="close-btn-wrapper" onclick="closeingcommentbox();">
+            <i class="fa fa-times close-btn"></i>
+        </div>
+        
+        
+        
+        <div data-role="fieldcontain" class="form-group hidden frmfld_note_id">
+        <input id="frmfld_note_id" name="note_id" type="hidden" value="0"></div>
+        <div data-role="fieldcontain" class="form-group fileupload frmfld_files">
+        <i class="gicon-camera file-upload" onclick="shownotesbuttons();"></i>
+        </div>
+        <div data-role="fieldcontain" class="form-group textarea frmfld_note">
+        <textarea class="form-control" id="frmfld_note" name="note" maxlength="4096" placeholder="" style="height: 52px; overflow-y: hidden;"></textarea>
+        <span><i class="gicon-notes"></i></span>
+        </div>
+        <div class="success-status hide">
+            <div class="success-icon-wrapper">
+                <i class="icon-check"></i>
+            </div>
+            <p></p>
+        </div>
+        
+        <div class="error-status hide">
+            <div class="error-icon-wrapper">
+                <i class="fa fa-ban"></i>
+            </div>
+            <p></p>
+        </div>
+        
+        <div class="clearfix">
+                <div data-role="fieldcontain" class="frm_field submit">
+                        <button type="button" name="submit" class="submit_com" onclick="addnote();">Save</button>
+                    </div>
+                        <img src="img/loading.gif" class="loading_send" style="display:none" />
+            
+            </div>
+            
+            
+            <div class="swiper-container swiper-container-horizontal customcommenttextarea">
+            <div id="uploadImgePreviews" class="files dropzone-previews swiper-wrapper uploadImgePreviews">
+            </div>
+            </div>
+        
+        
+            </div>  
+             <div class="ui-widget-overlay"></div>
+         
+         <div id="footerSlideContainer"></div> 
+        </div>  
+
+<!-- Notes Container Ends --><!-- add-comments Container Start -->
+
+        
+        <div class="container main-container questions-container add-comments-container" style="display: none;">
+      <div class="header-title row">
+        <p class="presentation-item-header">
+          
+    <a id="commentPrev" class="nav-arrow prev" href="#" onclick="changetoagendaitem(); return false;" title="Back to presentation"><i class="fa fa-angle-left"></i></a>
+
+    <span class="breadcrumbs"><a href="#" onclick="changetoagendaitem(); return false;"></a> /
+    <span class="green-text" onclick="changetoaddcomments(); return false;"></span></span>    </p>
+      </div>
+          <div class="questions-heading-title row">
+          <div class="votes-count col-xs-6" id="accvotescount">
+            <i class="fa fa-comment"></i>
+              <span class="green-text">0</span> 
+                <span class="comment_counter"></span>
+                <span class="comment_counter_text"></span>    
+          </div>
+          <div class="votes-sort col-xs-6">
+            <span>Sort by:</span>
+                    <a class="active sortbytime" id="accsortbytime" href="#" onclick="sortcomments('timestamp','desc');">
+                                            <i class="fa fa-caret-up time_s"></i> 
+                                                            </a>
+                    <a href="#" id="accsortbylikes"class="sortbylikes" onclick="sortcomments('likes','asc');">
+                                            <i class="fa fa-caret-up like_s"></i> 
+                                                            </a>
+          </div>
+        </div>
+                         <div class="comment_loop">
+                           <div id="inner_comment_loop" class="inner_comment_loop"> </div>
+                         <div id="show-form-container" onclick="commentpostbtn();" ondragstart="return false" onselectstart="return false">
+                <i class="fa fa-comment"></i>
+                <span class="commentpostplaceholder" ></span>
+                        </div>
+                         <div id="cpmaincomment" class="questions-filter-items main-questions-form-container" style="display:none;">
+        
+    <div class="has-file-upload" id="createdform">
+    <div class="close-btn-wrapper" onclick="closeingcommentbox();">
+        <i class="fa fa-times close-btn"></i>
+    </div>
+    <div class="form-group fileupload frmfld_files" data-role="fieldcontain">
+    <i class="gicon-camera file-upload" onclick="showimagebuttons();">
+    </i></div>
+    <div class="form-group textarea frmfld_comment" data-role="fieldcontain">
+    <textarea placeholder="Participate, write a post" maxlength="4096" name="comment" id="frmfld_comment" class="form-control">
+    </textarea>
+    <span><i class="fa fa-comment"></i></span></div>
+    <div class="form-group hidden frmfld_presentation_id" data-role="fieldcontain">
+      <input type="hidden" value="142" name="presentation_id" id="frmfld_presentation_id">
+    </div>
+    <div class="success-status hide">
+        <div class="success-icon-wrapper">
+            <i class="icon-check"></i>
+        </div>
+        <p></p><p><strong>Your <em>comment</em> <span style="">has</span> been sent to the moderator for approval.&nbsp;</strong><br><strong>Thank you for your participation.</strong></p>
+    </div>
+
+    <div class="error-status hide">
+        <div class="error-icon-wrapper">
+            <i class="fa fa-ban"></i>
+        </div>
+        <p></p><p>Something went wrong...<br>Your comments are limited to one per every 4 seconds.</p><p></p>
+    </div>
+
+    <div class="clearfix">
+            <div class="frm_field submit" data-role="fieldcontain">
+                <button name="capture_image" style="display:none;" class="captureimage" onclick="captureImage();" type="button">Take a photo</button>
+                <button name="upload_image" style="display:none;" class="uploadimage" onclick="uploadImage(pictureSource.PHOTOLIBRARY);" type="button">Choose a Photo</button>
+                
+                <button name="submit" onclick="submitcomment();" class="submit_com" type="submit">Send</button>
+            
+            </div>
+            <img src="img/loading.gif" class="loading_send" style="display:none" />
+        </div>
+      
+        <div class="swiper-container swiper-container-horizontal customcommenttextarea">
+            <div id="uploadImgePreviews" class="files dropzone-previews swiper-wrapper uploadImgePreviews">
+            </div>
+        </div>
+
+    </div>
+      </div>                   
+                        
+        </div>    
+         <div class="ui-widget-overlay"></div>
+     
+     <div id="footerSlideContainer"></div>  
+      <div id="footerSlideContainerbuttn"></div>  
+    </div>
+
+<!-- add-comments Container Ends --><!-- Seeker Game Container Start -->
+
+    <div class="container main-container seeker-game-container single-seeker-container" style="display: none;">
+      <div class="header-title row">
+        <p class="presentation-item-header">
+          
+    <a id="seekerPrev" class="nav-arrow prev" href="#" onclick="changetoagendaitem(); return false;" title="Back to presentation"><i class="fa fa-angle-left"></i></a>
+
+    <span class="breadcrumbs"><a href="#" onclick="changetoagendaitem(); return false;"></a> / <span class="green-text" onclick="changetoseeker(); return false;"></span></span>    </p>
+      </div>
+        <div class="seeker-game-top-container row">
+            <div class="seek-questions col-xs-4">
+                <i class="map-icon"></i>
+                <span class="green-text oneof"></span>
+                / <span class="totalof"></span>        </div>
+            <div class="seeker-game-question-level col-xs-8">
+                <ul class="bordered">
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="seeker-container"> 
+            <div class="seeker-bg-container" style="display:none;">
+                <div class="seeker-bg-overlay"></div>
+                <a class="msg-wrapper close-overlay" href="#" onclick="closeseekermzg();">
+                    <div class="wrong-msg-container">
+                        <i class="fa fa-ban"></i>
+                        <h5>
+                            <p>The entered answer is <strong>incorrect</strong>. <br>Try again!</p>
+                        </h5>
+                    </div>
+                </a>
+            </div>
+                            <div class="seeker-map-wrapper" align="center">
+                                     
+                        </div>
+            <div class="seeker-description">
+                           <div class="seeker-hint"></div>
+            </div>
+            
+    <div data-role="fieldcontain" class="form-group textfield seeker-answer-wrapper frmfld_code" id="seekerinputfield">
+    <input type="text" class="form-control" id="frmfld_code" name="code" maxlength="180" value="" placeholder="Answer">
+    </div>
+    <div class="success-status hide">
+        <div class="success-icon-wrapper">
+            <i class="icon-check"></i>
+        </div>
+        <p></p>
+    </div>
+
+    <div class="error-status hide">
+        <div class="error-icon-wrapper">
+            <i class="fa fa-ban"></i>
+        </div>
+        <p></p>
+    </div>
+
+    <div class="clearfix">
+            <div data-role="fieldcontain" class="frm_field submit btn-wrapper">
+        <button type="button" class="btn btn-default show-hint" name="show_hint">
+                        SeekerShowHint                
+                        </button>
+        <button type="submit" onclick="submitseekeranswer();" class="btn btn-primary submit_com" name="submit">Submit</button>
+        <img class="loading_send" style="display:none" src="img/loading.gif">
+                </div>
+        
+        </div>
+
+
+
+        </div>
+    </div>
+
+<!-- Seeker Game Container Ends --><!-- Add Question Container Start -->
+    
+    <div class="container main-container questions-container add-questions-container" style="display: none;">
+      <div class="header-title row">
+        <p class="presentation-item-header">
+          
+    <a id="questionPrev" class="nav-arrow prev" href="#" title="Back to presentation"><i class="fa fa-angle-left"></i></a>
+
+    <span class="breadcrumbs"><a href="#" onclick="changetoagendaitem(); return false;"></a> / 
+    <span class="green-text" onclick="changetoaddquestions(); return false;"></span></span>   </p>
+      </div>
+          <div class="questions-heading-title row">
+          <div class="votes-count col-xs-6">
+            <i class="fa fa-question"></i>
+                    <span class="green-text">3</span> 
+                    <span class="question_counter"></span>
+                    <span class="small-text">2 
+                    </span>
+          </div>
+          <div class="votes-sort col-xs-6">
+            <span>Sort by:</span>
+                    <a class="active sortbytime" href="#" onclick="sortquestions('timestamp','desc');">
+                                            <i class="fa fa-caret-up time_s"></i> 
+                                                            </a>
+                    <a href="#" class="sortbylikes" onclick="sortquestions('likes','asc');">
+                                            <i class="fa fa-caret-up like_s"></i> 
+                                                         </a>
+          </div>
+        </div>
+                         <div class="comment_loop">
+                            <div class="inner_comment_loop"> </div>
+                          <div id="show-form-container"  onclick="questionpostbtn();" ondragstart="return false" onselectstart="return false">
+          <i class="fa fa-comment"></i>      
+                <span class="questionspostplaceholder"></span>
+              </div>
+                         <div class="questions-filter-items main-questions-form-container" style="display: none;" id="cpmainquestion">
+        
+    <div id="createdform">
+    <div class="close-btn-wrapper" onclick="closeingcommentbox();">
+        <i class="fa fa-times close-btn"></i>
+    </div>
+    <div data-role="fieldcontain" class="form-group textarea frmfld_question">
+    <textarea class="form-control add_question_textarea" id="frmfld_question" name="question" maxlength="4096" placeholder=""></textarea>
+    <span>
+    <i class="fa fa-question"></i>
+    </span></div>
+    <div class="form-group hidden frmfld_presentation_id" data-role="fieldcontain">
+      <input type="hidden" value="142" name="presentation_id" id="frmfld_presentation_id">
+    </div>
+    <div class="success-status hide">
+        <div class="success-icon-wrapper">
+            <i class="icon-check"></i>
+        </div>
+        <p></p>
+        <p>Your question has been sent to the moderator for approval. <br>Thank you for your participation.</p>
+    </div>
+
+    <div class="error-status hide">
+        <div class="error-icon-wrapper">
+            <i class="fa fa-ban"></i>
+        </div>
+        <p></p>
+    </div>
+
+    <div class="clearfix">
+            <div class="frm_field submit" data-role="fieldcontain">
+            <button name="submit" onclick="submitquestion();" class="submit_com" type="submit"></button>
+            <button name="submits" class="loading_send" style="display:none" type="submit">Sending...</button>
+            </div>
+     
+        </div>
+        <div class="swiper-container swiper-container-horizontal customcommenttextarea">
+        <div class="files swiper-wrapper">
+        </div>
+    </div>
+
+    </div>
+      </div>                   
+                        
+        </div>    
+           
+    </div>
+
+<!-- Add Question Container Ends --><!-- Quiz Container Start -->
+
+
+    <div class="container main-container quiz-container" style="display: none;">
+        <div class="quiz-header-title row">
+            <p class="presentation-item-header">
+                <a id="quizPrev" class="nav-arrow prev" href="#" onclick="changetoagendaitem(); return false;" title="Back to presentation"><i class="fa fa-angle-left"></i></a>
+                <span class="breadcrumbs">
+                    <a href="#" onclick="changetoagendaitem(); return false;"></a> / 
+                    <span class="green-text" onclick="changetoaddquiz(); return false;"></span>
+                </span>    
+            </p>
+        </div>
+        <div class="questionsdiv">
+            <div class="quiz-timer-container row">
+                <span class="quiz-icon-wrapper">
+                    <i class="icon-quiz"></i>
+                </span>
+                <span class="quiz-number"></span>        
+                <span class="timer-icon" id="quiz_timer_icon">
+                    <i class="fa fa-clock-o"></i>
+                    <span id="countdown_box">1787</span>
+                </span>        
+                <span class="quiz-questions">
+                    <ul class="questions-bar">
+                        <li class="active"></li>
+                    </ul>
+                </span> 
+            </div>
+            <div class="quiz-question-container">
+                <div class="quiz-with-video" id="quiz-video-container" style="display:none;"></div>
+                <div class="quiz-image-container" style="display:none;"></div> 
+                <div class="quiz-question"></div>
+                <h4></h4>
+            </div>
+            <div id="quiz_form" action="" method="post">
+                <div class="quiz-answer-container"></div>
+                <div class="quiz-btn-wrapper"></div>
+                <div class="loadingquiz" style="display:none;">
+                    <img src="img/ajax-loader.gif" />
+                </div>
+            </div>        
+            
+            <div class="quiz-btn-wrapper hidden" id="showformanswers">
+                <button id="show_questions_btn" class="btn btn-primary">Show answers</button>
+            </div>
+        </div>
+    </div>
+<!-- Quiz Container Ends --><!-- Vote Container Start -->
+    
+     <div class="container main-container voting-page-container" style="display: none;">
+      <div class="header-title row">
+            <p class="presentation-item-header">
+          
+    <a id="votingPrev" class="nav-arrow prev" href="#" onclick="changetoagendaitem(); return false;" title="Back to presentation"><i class="fa fa-angle-left"></i></a>
+
+    <span class="breadcrumbs"><a href="#" onclick="changetoagendaitem(); return false;"></a> / <span class="green-text" onclick="changetovoting(); return false;"></span></span>    </p>
+        </div>
+
+        <div class="vote-forwarding-users" style="display: none;">
+            <div class="vote-forwarding-user">
+                <a class="image" href="/Add-vote/-/OCintranet-100041/290/" style="background-image:url('/oc-publisher-framework/beta/resources/gamification/images/mobile/default-user-image.png')"></a>
+                <span class="name">You</span>
+            </div>
+            <div class="vote-forwarding-user">
+                <a class="image checked" href="/Add-vote/-/OCintranet-100041/290/forwarded/101221" style="background-image:url('/resources/files/event/images/thumb_1462550041.jpg')"></a>
+                <span class="name">adrian onecom</span>
+            </div>
+        </div>
+
+      <div class="votes-heading-title row">
+        <div class="votes-count col-xs-5">
+          <i class="icon-voting"></i>
+                <span class="green-text"></span>
+                <span class="green-text-text" style="margin-left: 0px;"></span>
+                    </div>
+        <div class="votes-sort col-xs-7">
+          <span></span>
+          <a class="active sortbytime" href="#" onclick="sortvoting('title_value','desc')">
+                                    <i class="fa fa-caret-up tit_s time_s"></i> 
+                                    <span class="tit_span_tag"></span>
+                                                </a>
+          <a href="#" class="sortbylikes" onclick="sortvoting('votes_count','asc')">
+                                    <i class="fa fa-caret-up vot_s like_s"></i> 
+                                    <span class="vot_span_tag"></span>
+                                                </a>
+        </div>
+      </div>
+        
+      <div class="voting-content-wrapper">
+                    
+                <div class="voting-end-content-title">
+          <h3>
+                    <i class="fa fa-clock-o"></i> 
+                    <span class="votingClosesIn"></span>
+                      <span class="voting-countdown"></span>
+                </h3>
+        </div>
+            <button class="btn btn-primary" type="button" id="open-vote-forwarding-users-search-dialog" style="display:none;" onclick="openvoteforwardialog();">vote forward</button>
+            <div id="voteForwardingControls" class="vote-forwarding-controls" style="display: none;">
+
+              <div class="vote-author">
+                <span class="forwardVoteReceiptantName"> adrian                        outlook </span>
+                <span class="forwardVoteStaus">Er tildelt å stemme på dine vegne</span>                                           
+              </div>          
+              <div class="img-wrapper" id="forwardVoteReceiptantImage" ></div>
+            </div>
+           <div class="voting-closed-content-title">
+          <h3>
+                    <i class="fa fa-clock-o"></i> 
+                    <span class="votingStatus"></span>
+                               </h3>
+        </div>         
+            <div class="alert alert-success voting-success-message" style="display:none;">
+                <p>
+                    Your vote has been sent. 
+                    <br>
+                    Thank you for your participation.
+                </p>
+            </div>        
+                    
+                <div class="voting-content-item">
+          <ul>
+                            <li>
+              <a href="">
+                                        
+                <h4 class="vote-item-title">Dorin</h4>
+                <p class="vote-item-subtitle"></p>
+                <div class="voting-item-count">
+                                <i class="icon-voting"></i>  
+                                0                            votes                        </div>
+              </a>
+                                  <div class="voting-confirm-wrapper">
+                <h4>Give your vote!</h4>
+                <div class="confirm-btn-wrapper">
+                  <a href="" class="cancel">Cancel</a>
+                  <a href="http://oceventmanager.com/Add-vote/-/OCintranet-100041/163/140" class="voting-toggle-btn">Yes</a>
+                </div>
+              </div>
+                                </li>
+                            <li class="">
+              <a href="">
+                                        
+                <h4 class="vote-item-title">Felix</h4>
+                <p class="vote-item-subtitle"></p>
+                <div class="voting-item-count">
+                                <i class="icon-voting"></i>  
+                                0                            votes                        </div>
+              </a>
+                                  <div class="voting-confirm-wrapper">
+                <h4>Give your vote!</h4>
+                <div class="confirm-btn-wrapper">
+                  <a href="" class="cancel">Cancel</a>
+                  <a href="http://oceventmanager.com/Add-vote/-/OCintranet-100041/163/141" class="voting-toggle-btn">Yes</a>
+                </div>
+              </div>
+                                </li>
+                            <li class="">
+              <a href="">
+                                        
+                <h4 class="vote-item-title">Marian</h4>
+                <p class="vote-item-subtitle"></p>
+                <div class="voting-item-count">
+                                <i class="icon-voting"></i>  
+                                1                            votes                        </div>
+              </a>
+                                  <div class="voting-confirm-wrapper">
+                <h4>Give your vote!</h4>
+                <div class="confirm-btn-wrapper">
+                  <a href="" class="cancel">Cancel</a>
+                  <a href="http://oceventmanager.com/Add-vote/-/OCintranet-100041/163/136" class="voting-toggle-btn">Yes</a>
+                </div>
+              </div>
+                                </li>
+                          </ul>
+        </div>
+              </div>
+      <div class="voting-filter-items" style="display: none;">
+        <div class="form-group">
+          <input id="vote-items-filter" type="text" class="form-control" placeholder="">
+          <span><i class="fa fa-search"></i></span>
+        </div>
+        </div>
+    </div>
+
+<!-- Vote Container End --><!-- View Friend container Start -->
+
+    <div class="container main-container add-friends-container view-friend-container" style="display: none;">
+        <div class="header-title header-title2 row ">
+            <p>
+                <a class="prev" onclick="viewfriend(25);" href="#" title="previous friend">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                            
+                <span class="breadcrumbs"><a href="#" onclick="changetocontacts(); return false;"></a> / <span class="green-text" onclick="changetoviewfriend(); return false;"></span></span>            
+                <a class="next" onclick="viewfriend(26);" href="#" title="next friend">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                        </p>
+        </div>
+                        
+        
+        <div class="item-inner-wrapper row">
+            <div class="friends-item-inner">
+                <div class="friends-item-img" style=""></div>
+                <h2>
+                                    <i class="oc-icon-friends"></i>
+                                    <span class="frndnm"></span>
+                                               </h2>
+                            <h6></h6>
+                        </div>
+        </div>
+        
+            <div class="row">
+            <div class="item-inner-info">
+                            <div class="add-btn-wrapper">
+                    <a href="#" class="call_button">
+                                     </a>
+                </div>
+                            
+                            <div class="add-btn-wrapper">
+                    <a href="#" class="email_button">
+                                      </a>
+                </div>
+                
+                    <div  id="downVCard" class="add-btn-wrapper">
+                        <a href="#" class="vcard">
+                            <i class="fa fa-download"></i>
+                        </a>
+                            <br /><br />
+                            <span id="ready"></span>
+                    </div>
+                            
+                            <p class="mobTitle">
+                            Mobile: 
+                    <span class="green-text mob">+4790762776</span>
+                </p>
+                            
+                            <p class="emTitle">
+                            E-mail:
+                    <span class="green-text em">hb@onecom.no</span>
+                </p>
+                            
+                            <p class="friendGender" style="display:none;">
+                            Gender:
+                    <span class="green-text gender" >male</span>
+                </p>
+                            
+                            
+                                <h3 class="registration-questions-title" style="display:none;"></h3>
+                                <div class="qa">
+                             </div>
+                                                            </div>
+        </div>
+        </div>
+
+<!-- View Friend container Ends --><!-- Seeker Results container Start -->    
+
+    <div class="container main-container seeker-game-container seeker-results-container" style="display: none;">
+      <div class="header-title row">
+        <p class="presentation-item-header">
+          
+    <a class="nav-arrow prev" href="#" onclick="changetoagendaitem(); return false;" title="Back to presentation"><i class="fa fa-angle-left"></i></a>
+
+    <span class="breadcrumbs"><a href="#" onclick="changetoagendaitem(); return false;"></a> / <span class="green-text" onclick="changetoseekerresults(); return false;"></span></span>   </p>
+      </div>
+       <div class="seeker-game-top-container row">
+            <div class="seek-questions col-xs-12">
+                <i class="map-icon"></i>
+                    <span class="green-text">
+                                       </span>    
+            </div>
+        </div>
+        <div class="seeker-finished-container">
+            <div class="finished-bg"></div>
+            <div class="congrat-text-wrapper">
+                <p class="green-text"></p>
+                <p class="congratsText"></p>
+            </div>
+                    <div class="btn-wrapper">
+                <a class="btn btn-primary btn-rounded reset_seek" href="javascript:reset_seeker();">
+                                </a>
+            </div>
+                </div>
+                <div class="seeker-top-scores-container">
+            <div class="seeker-scores-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td class="seeker-scores-table-heading"></td>
+                        <td class="crct">
+                                                </td>
+                        <td class="seeker-hints-col">
+                            <span class="hints-count-label label label-danger hint_h">H</span>
+                        </td>
+                        <td class="showhide">
+                            <div class="bordered bordered1"><span>1</span></div>
+                        </td>
+                        <td class="showhide">
+                            <div class="bordered bordered2"><span>2</span></div>
+                        </td>
+                        <td class="showhide">
+                            <div class="bordered bordered3"><span>3</span></div>
+                        </td>
+                        <td class="plcs"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="seeker-finished-container">
+            <div class="btn-wrapper">
+                                <a class="btn btn-primary btn-rounded seeall" href="javascript:showseekerresults('l-full');">
+                                        </a>
+                        </div>
+        </div>
+    </div>
+
+<!-- Seeker Results container Ends --><!-- Score Card container Start -->
+
+    <div class="container main-container leaderboards-container score-card-container" style="display: none;">
+      <div class="header-title row">
+        <p>
+    <span class="breadcrumbs">
+    <a href="#" onclick="changetoagendaitem(); return false;" id="b1"></a> / <a id="b2" href="#" onclick="changetoaddquiz(); return false;"></a> / <span class="green-text" onclick="changetoscorecard(); return false;"></span></span></p> </div>
+      <div class="subheader-grey row"></div>
+      <div class="top-results-table-container row">
+        <div class="team-points-table">
+          <table class="table table-striped">
+            <tbody>
+                                            <tr class="current-user">
+                                <td class="num-col">
+                                    <span class="num">1</span>
+                                </td>
+                                <td class="avatar-col">
+                                    <span class="avatar">
+                                        <div class="img img-circle" style="background-image:url('');"></div>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="name">
+                                        Rahul Chhabra                                </span>
+                                </td>
+                                <td class="point">
+                                    2 698 500                            </td>
+                            </tr>
+                                                <tr>
+                                <td class="num-col">
+                                    <span class="num">2</span>
+                                </td>
+                                <td class="avatar-col">
+                                    <span class="avatar">
+                                        <div class="img img-circle" style="background-image:url('');"></div>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="name">
+                                        Marian Bucur                                </span>
+                                </td>
+                                <td class="point">
+                                    1 774 000                            </td>
+                            </tr>
+                                                
+                                                <tr>
+                                <td class="num-col">
+                                    <span class="num">4</span>
+                                </td>
+                                <td class="avatar-col">
+                                    <span class="avatar"></span>
+                                </td>
+                                <td>
+                                    <span class="name">-</span>
+                                </td>
+                                <td class="point">0</td>
+                            </tr>
+                                                
+                                </tbody>
+          </table>
+        </div>
+      </div>
+    </div> 
+
+<!-- Score Card container Ends --><!-- Agenda item container Start -->
+   
+     <div class="container main-container agenda-item-container" style="display: none;">
+      <div class="header-title row">
+        <p>
+          <a class="nav-arrow prev" href="#" title="Forrige"><i class="fa fa-angle-left"></i></a>
+        <span class="breadcrumbs"><span class="green-text">hello</span></span>    
+        <a class="nav-arrow next" href="#" title="Neste"><i class="fa fa-angle-right"></i></a>
+      </p>  </div>
+      <div class="row">
+       <div class="date-wrapper ">
+          <div class="date">
+                    <p></p>
+                </div>
+        </div>
+        <div class="time-wrapper ">
+          <div class="time">
+                    <p><i class="fa fa-clock-o"></i> </p>
+                </div>
+        </div>
+                      </div>
+          <div class="main-img-wrapper">
+        <div class="main-img agenda-main-img" style="background-image: url('');"></div>
+      </div> 
+          <div class="agenda-item-img-info">
+        <h5></h5>
+                <p>
+                 
+                &nbsp;        </p>
+              </div>
+      <div class="agenda-item-future row">
+        <div class="container ">
+          <div class="futures-wrapper">
+          <div class="future-title">:-)</div>
+          <div class="row">
+              <ul class="presentation-modules">
+                           
+              </ul>
+          </div>
+          <div class="here-video">
+            
+            </div>
+                                            <div class="future-info ">
+              <p></p>
+    <p><span></span></p>                    
+                                </div>
+          </div>
+        </div>
+      </div>
+          
+        <div class="row">
+        <div class="agenda-item-rating-container" style="display:none;">
+          <span class="urrate"></span>
+          <div class="item-interactions">
+              <div class="item-interaction item-interaction-rate interaction-box" data-ratevalue="1" data-original-title="" title="">   
+                                      <a href="javascript:void(0)" onclick="rateme(1);" class="rate-star f1" data-rate="1">
+                      <i class="fa fa-star"></i>
+                  </a>
+                                      <a href="javascript:void(0)" onclick="rateme(2);" class="rate-star f2" data-rate="2">
+                      <i class="fa fa-star"></i>
+                  </a>
+                                      <a href="javascript:void(0)" onclick="rateme(3);" class="rate-star f3" data-rate="3">
+                      <i class="fa fa-star"></i>
+                  </a>
+                                      <a href="javascript:void(0)" onclick="rateme(4);" class="rate-star f4" data-rate="4">
+                      <i class="fa fa-star"></i>
+                  </a>
+                                      <a href="javascript:void(0)" onclick="rateme(5);" class="rate-star f5" data-rate="5">
+                      <i class="fa fa-star"></i>
+                  </a>
+                                </div>
+          </div>   
+                      
+                      <a id="rate" onclick="submitrating();" class="hidden" href="javascript:void();"></a>
+                      <div class="after-rating-container hidden">
+                                    <p class="msg"></p>
+                    <div class="comment-form hidden">
+                        <div class="form-group">
+                            <input type="text" class="form-control comment-input" placeholder="">
+                            <span><i class="fa fa-comment"></i></span>
+                        </div>
+                        <div class="after-rate-btn-wrapper">
+                            <a class="cancel-btn send-comment" onclick="cancelagendasubmit();" href="javascript:void(0)"></a>
+                            <a class="send-btn send-comment" onclick="submitagendacomment();" href="javascript:void(0)"></a>          
+                        </div>
+                    </div>
+                          </div>
+                        
+        </div>
+      </div>
+        </div>                                                                                  
+<!-- Agenda item container Ends --><!-- Scanner container Starts -->
+
+    <div class="container main-container scannerDiv" style="display:none;">
+        <div class="scanner-overlay"></div>
+        <div id="scannerloginBox" class="hide-element" style="display:block;">
+            <div class="scannerlogo">
+                <img src="img/arvlogo.png">
+            </div>
+            <form class="form-container" name="user_login" method="post" action="" id="user_login">
+                <div class="scanner login-wrapper">
+                    <span class="scannerloginspan"> Login: </span>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="email" id="scanner_username" value="" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="password" value="" id="scanner_password" placeholder="Password">
+                    </div>
+                    <div class="btn-wrapper login-page-button">
+                        <button type="button" id="scanner_submit" onclick="loginscanner();" class="btn">Login</button>
+                        <img src="img/loading.gif" class="loadingscanner" style="display:none;"> <br />
+                    </div>
+                </div>
+            </form>
+        </div>
+ 
+        <div class="buttonDiv" id="scannerbtndiv">
+            <div class="scannerprofilediv">
+                <div class="scannerheader">
+                    <div class="leftpart">
+                        <i class="gicon-my-ticket"></i>
+                        <span class="scantype">Partnerscan</span>
+                    </div>
+                    <div class="centerpart">
+                        <div class="toppart">
+                            <span class="scankey">Event Title:</span>
+                            <span class="scaneventtitle"></span>
+                        </div>
+                        <div class="middlepart">
+                            <span class="scankey">Partner:</span>
+                            <span class="scanpartnertitle"></span>
+                        </div>
+                        <div class="bottompart">
+                            <span class="scankey">User:</span>
+                            <span class="scanuser"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="searchbar">
+                    <i class="fafasearch" id="fascansearch" onclick="searchscannerurl();">a</i>
+                    <input type="text" class="searchscanner" value="">
+                     <ul id="scan_srch_usr" class="scanner_search_user_list" style="display:none;"> </ul>
+                </div>
+                <div class="scannerbody">
+                    <div class="scanner_results" style="display: none;">
+                        <div class="upperdiv">
+                            <p></p>
+                        </div>
+                        <div class="lowerdiv">
+                            <div class="lowerleft">
+                                <img src="img/qrcode.png" />
+                            </div>
+                            <div class="lowermiddle">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div class="lowerright">
+                                <img src="img/ocimg.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scannerfooter">
+                    <div class="leftpart" onclick="scannerlogout();">
+                        <div class="leftpartinner">
+                            <i class="gicon-logout"></i>
+                            <span class="scanlogout">Logout</span>
+                        </div>
+                    </div>
+                    <div class="centerpart">
+                        <div class="gotoscanner">
+                            <img onclick="myscanner();" src="img/scaneericon.png">
+                        </div>
+                    </div>
+                    <div class="rightpart" >
+                        <div class="topleftpart">
+                            <img src="img/graph.png" />
+                        </div>
+                        <div class="bottomrightpart">
+                            <span class="bookedusers"></span>
+                            <span class="enteredusers"></span>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+        <div class="qrdata"></div>
+        <div class="qrapistatus"></div>
+
+    </div>
+
+<!-- Scanner container Starts  Ends --><!-- Footer Starts -->
+
+
+    <footer class="footertag" style="display: none;">
+        <div class="footer-widget" style="display:none"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 footer-menu">
+                                                
+                        </div>
+            </div>
+        </div>
+    </footer> 
+
+<!-- Footer Ends --><!-- Other Divs --> 
+
+
+    </div>
+
+ <!-- Side menu Starts -->
+    <div class="dropdown-menu custom-dropdown" role="menu" aria-labelledby="dLabel" style="display:none;">
+        <div class="version">0.0.3</div>                
+                <div class="user-profile-info">
+                    <div class="img-wrapper" id="medium_profile_pic" style="background-image: url('')">
+                        <a href="#" onclick="changetoprofile('yes'); return false;">
+                            Profile                        </a>
+                    </div>
+                    <div class="user-info">
+                        <span class="firstname">
+                           <a href="#" onclick="changetoprofile('yes'); return false;">
+                                Felix                            </a>
+                        </span>
+                        <p class="lastname">
+                            <a href="#" onclick="changetoprofile('yes'); return false;">
+                                Manea                            </a>
+                        </p>
+                                                    <span class="team-name"></span>
+                                                <div class="edit-btn-wrapper">
+                           <a href="#" onclick="changetoprofile('yes'); return false;">Edit User</a>
+                        </div>
+                    </div>
+                </div>
+                                <div class="events-wrapper">
+                    <i class="icon-oc-event-manager"></i>
+                    <div class="events">
+                        <div class="eventsLoader" style="display:none"></div>
+                        <p class="my-events-title">My networks</p>
+                                                
+                                            </div>
+                </div>
+                
+                  <div class="menu-items-wrapper">
+                    <ul class="">
+                        <li>
+                            <a class="active" href="#" onclick="loadgamification(); return false;">
+                                <i class="gicon-welcome"></i>
+                                <span class="gamification"></span>
+                            </a>
+                        </li>
+                                                <li>
+                            <a href="#" onclick="changetoprofile('yes'); return false;">
+                                <i class="gicon-my-profile"></i> 
+                                <span class="profile"></span>
+                            </a>
+                        </li>
+                                                <li>
+                            <a href="#" onclick="changetoticketing('yes'); return false;">
+                                <i class="gicon-my-ticket"></i> 
+                                <span class="ticket"></span>
+                            </a>
+                        </li>
+                                                <li>
+                            <a href="#" onclick="changetoagenda('yes'); return false;">
+                                <i class="gicon-agenda"></i>  
+                                <span class="agenda"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="changetopoints('yes'); return false;">
+                                <i class="gicon-points"></i>
+                                <span class="points"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="changetocontacts('yes'); return false;">
+                                <i class="gicon-friends"></i> 
+                                <span class="friends"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="changetonotes('yes'); return false;">
+                                <i class="gicon-notes"></i> 
+                                <span class="notes"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="changetomyscanner('yes'); return false;">
+                                <i class="fa fa-qrcode" aria-hidden="true"></i>
+                                <span class="scanner">Ticket scanner</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="line"></div>
+                <div class="logout-btn-wrapper">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="logout(); return false;">
+                                <i class="gicon-logout"></i>   
+                                <span class="logout"></span>           
+                             </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            
+<!-- Side menu Ends --><!-- Modal View -->
+       <div class="vex vex-theme-plain vote-forwarding-dialog" style="display: none;">
+        <div class="vex-overlay"></div>
+        <div class="vex-content">
+          <form class="vex-dialog-form">
+            
+          </form>
+        </div>
+      </div>
+<!-- Modal View --><!-- Notifications Div View -->           
+        <div class="tooltipster-base tooltipster-sidetip tooltipster-borderless tooltipster-bottom tooltipster-fade tooltipster-show" style="min-width: 330px; max-width: 330px; pointer-events: auto; z-index: 9999999; position: fixed; top: 60px; height: 450px; width: 330px; animation-duration: 350ms; transition-5duration: 350ms; display: none;" id="tooltipster-409679">
+            <div class="tooltipster-box">
+                <div class="tooltipster-content">
+                    <div class="slimScrollDiv" style="position: relative; overflow: scroll; width: auto; height: 60px;">
+                        <dl id="notifications" style="overflow: scroll; width: auto; height: 60px;">
+                            <dt class="unread">
+                                noNotifications
+                            </dt>
+                        </dl>
+                        <div class="slimScrollBar" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 116px;"></div>
+                        <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tooltipster-arrow" style="left: 110px;">
+                <div class="tooltipster-arrow-uncropped">
+                    <div class="tooltipster-arrow-border"></div>
+                    <div class="tooltipster-arrow-background"></div>
+                </div>
+            </div>
+        </div>
+<!-- Notifications Div View -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/mediaelement-and-player.min.js"></script>         
+<!-- Main js file -->
+        <script src="js/main.js"></script>
+        <script src="js/custom.js"></script>
+<!-- Page specific js files -->
+        <script src="js/home.js"></script>
+        <script src="js/jquery.endless-scroll.js"></script>
+        <script src="js/overlay_mobile.js"></script>
+        <script src="js/overlay_quiz.js"></script>        
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
-</html>
+        <script src="js/facebookConnectPlugin.js"></script> 
+        <script src="js/requestAnimationFrame.js"></script> 
+        <script src="demo/fastclick.js"></script>
+        <script src="demo/demo.js"></script>
+        <script src="js/canvas-video-player.js"></script>
+        <script src="js/md5.js"></script> 
+        <script src="js/functions.js"></script>
+        <script src="js/index.js"></script>    
+</body></html>
